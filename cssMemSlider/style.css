@@ -1,5 +1,7 @@
 :root {
   --border-radius: 5px;
+  --dark-gray: #444;
+  --dark-transparent: #000a;
 }
 
 * {
@@ -13,11 +15,19 @@ html {
   font-family: 'Courier New', 'Courier', monospace;
 }
 
+body {
+  background: url(img/pattern.jpg);
+  background-color: var(--dark-gray);
+}
+
 .container {
   max-width: 1280px;
   width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 1rem;
+  
+  background: var(--dark-transparent);
 }
 
 /* GALLERY */
