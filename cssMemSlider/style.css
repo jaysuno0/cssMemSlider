@@ -1,7 +1,12 @@
 :root {
-  --border-radius: 5px;
-  --dark-gray: #444;
+  --border-radius: 7px;
+
+  --control-size: 25px;
+
+  --dark-gray: #222;
   --dark-transparent: #000a;
+  --white: #fff;
+  --accent: #d8b028;
 }
 
 * {
@@ -12,12 +17,13 @@
 
 html {
   font-size: 22px;
-  font-family: 'Courier New', 'Courier', monospace;
+  font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
 body {
   background: url(img/pattern.jpg);
   background-color: var(--dark-gray);
+  color: var(--white);
 }
 
 .container {
@@ -25,7 +31,7 @@ body {
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 2rem;
   
   background: var(--dark-transparent);
 }
@@ -44,4 +50,24 @@ body {
 }
 .gallery__image{
   border-radius: var(--border-radius);
+  border: 5px solid var(--accent);
+}
+
+.text {
+  display: inline-block;
+  padding: 1rem;
+  width: 75%;
+}
+
+.controls {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 24%;
+}
+
+.control {
+  cursor: pointer;
+  width: var(--control-size);
+  height: var(--control-size);
+  margin-right: 0.5rem;
 }
