@@ -5,7 +5,7 @@
 
   --padding-standard: 0.5rem;
   --padding-large: 1rem;
-  --control-size: 25px;
+  --control-size: 1rem;
 
   --dark-gray: #222;
   --dark-transparent: #111d;
@@ -35,6 +35,7 @@ body {
   color: var(--text-color);
 }
 
+
 .container {
   display: flex;
   align-content: flex-start;
@@ -45,10 +46,11 @@ body {
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2rem 4rem;
+  padding: 2rem 5rem;
   
   background: var(--dark-transparent);
 }
+
 
 /* GALLERY */
 .gallery {
@@ -87,80 +89,116 @@ body {
 
 
 /* CONTROLS */
+.control-radio {
+  display: none;
+}
+
+.controls-wrapper {
+  margin-right: 1rem;
+}
+
+.control-wrapper {
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+}
+
+.control-radio ~ .controls-wrapper .control:after {
+  visibility: hidden;
+  width: calc(var(--control-size) * 0.6);
+  height: calc(var(--control-size) * 0.6);
+  content: '';
+
+  border-radius: 50%;
+  animation-duration: var(--transition-large);
+  animation-fill-mode: forwards;
+}
+
+
 .control {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   order: 3;
 
   width: var(--control-size);
   height: var(--control-size);
-  margin-left: var(--padding-standard);
 
-  cursor: pointer;
   transition: var(--transition-standard);
 
   /* custom styling */
   appearance: none;
   border-radius: 50%;
-  border: var(--border-standard);
   background-color: var(--accent);
 }
-.control:hover {
+.control-wrapper:hover .control{
   background-color: var(--text-color);
   border-color: var(--text-color);
 }
-.control:last-of-type {
-  margin-right: var(--padding-large);
+
+
+/* CONTROLS CHANGE */
+#control-1:checked ~ .controls-wrapper label[for = control-1] .control:after {
+  visibility: visible;
+  animation-name: appear-control;
+}
+#control-2:checked ~ .controls-wrapper label[for = control-2] .control:after {
+  visibility: visible;
+  animation-name: appear-control;
+}
+#control-3:checked ~ .controls-wrapper label[for = control-3] .control:after {
+  visibility: visible;
+  animation-name: appear-control;
+}
+#control-4:checked ~ .controls-wrapper label[for = control-4] .control:after {
+  visibility: visible;
+  animation-name: appear-control;
 }
 
-.control:checked::after {
-  width: calc(var(--control-size) * 0.6);
-  height: calc(var(--control-size) * 0.6);
-  content: '';
 
-  border-radius: 50%;
 
-  background-color: var(--dark-gray);
-}
-
+/* IMAGE CHANGE */
 #control-2:checked ~ .gallery .gallery__image-wrapper {
   transform: translateX(-100%);
 }
-
 #control-3:checked ~ .gallery .gallery__image-wrapper {
   transform: translateX(-200%);
 }
-
 #control-4:checked ~ .gallery .gallery__image-wrapper {
   transform: translateX(-300%);
 }
 
+
+/* TEXT CHANGE */
 #control-1:checked ~ .text-wrapper #text-1 {
   display: block;
-  animation: appear var(--transition-large-extra);
+  animation: appear-text var(--transition-large-extra);
 }
-
 #control-2:checked ~ .text-wrapper #text-2 {
   display: block;
-  animation: appear var(--transition-large-extra);
+  animation: appear-text var(--transition-large-extra);
 }
-
 #control-3:checked ~ .text-wrapper #text-3 {
   display: block;
-  animation: appear var(--transition-large-extra);
+  animation: appear-text var(--transition-large-extra);
 }
-
 #control-4:checked ~ .text-wrapper #text-4 {
   display: block;
-  animation: appear var(--transition-large-extra);
+  animation: appear-text var(--transition-large-extra);
 }
 
 
-@keyframes appear {
+/* ANIMATION */
+@keyframes appear-text {
   from {
     color: transparent;
   } to {
     color: inherit;
+  }
+}
+@keyframes appear-control {
+  from {
+    background-color: transparent;
+  } to {
+    background-color: var(--dark-gray);
   }
 }
