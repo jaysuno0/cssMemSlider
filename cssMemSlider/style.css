@@ -1,12 +1,16 @@
 :root {
   --border-radius: 7px;
+  --border-standard: 3px solid var(--accent);
+  --border-large: 6px solid var(--accent);
 
+  --padding-standard: 0.5rem;
   --control-size: 25px;
 
   --dark-gray: #222;
   --dark-transparent: #000a;
   --white: #fff;
   --accent: #d8b028;
+  --text-color: #fdf9e7;
 }
 
 * {
@@ -23,11 +27,15 @@ html {
 body {
   background: url(img/pattern.jpg);
   background-color: var(--dark-gray);
-  color: var(--white);
+  color: var(--text-color);
 }
 
 .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   max-width: 1280px;
+
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
@@ -49,16 +57,22 @@ body {
   height: auto;
 }
 .gallery__image{
+  max-width: 65%;
+  height: auto;
   border-radius: var(--border-radius);
-  border: 5px solid var(--accent);
+  border: var(--border-large);
 }
 
+
+/* TEXT */
 .text {
   display: inline-block;
-  padding: 1rem;
+  padding: var(--padding-standard);
   width: 75%;
 }
 
+
+/* CONTROLS */
 .controls {
   display: inline-flex;
   justify-content: flex-end;
@@ -66,8 +80,27 @@ body {
 }
 
 .control {
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: var(--control-size);
   height: var(--control-size);
-  margin-right: 0.5rem;
+  margin-right: var(--padding-standard);
+  cursor: pointer;
+
+  /* custom styling */
+  appearance: none;
+  border-radius: 50%;
+  border: var(--border-standard);
+}
+
+.control:checked::after {
+  width: 70%;
+  height: 70%;
+  content: '';
+
+  border-radius: 50%;
+
+  background-color: var(--text-color);
 }
