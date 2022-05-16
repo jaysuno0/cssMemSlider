@@ -1,9 +1,9 @@
+/******** GENERAL ********/
 :root {
   --border-radius: 0.5rem;
 
   --padding-standard: 0.5rem;
   --padding-large: 1rem;
-  --control-size: 1.1rem;
 
   --dark-gray: #222;
   --dark-transparent: #111d;
@@ -50,11 +50,11 @@ body {
 }
 
 
-/* GALLERY */
+/******* GALLERY ********/
 .gallery {
   display: flex;
   margin: 0 auto;
-  margin-bottom: var(--padding-standard);
+  margin-bottom: var(--padding-large);
   overflow: hidden;
 }
 .gallery__image-wrapper {
@@ -73,7 +73,7 @@ body {
 }
 
 
-/* TEXT */
+/******** TEXT ********/
 .text-wrapper {
   display: inline-block;
   width: 70%;
@@ -86,7 +86,7 @@ body {
 }
 
 
-/* CONTROLS */
+/******** CONTROLS ********/
 .control-radio {
   display: none;
 }
@@ -102,11 +102,11 @@ body {
 
 .control-radio ~ .controls-wrapper .control:after {
   visibility: hidden;
-  width: calc(var(--control-size) * 0.7);
-  height: calc(var(--control-size) * 0.7);
-  content: '';
+  content: "";
+  width: 65%;
+  height: 65%;
 
-  border-radius: 50%;
+  border-radius: 100px;
   animation-duration: var(--transition-large);
   animation-fill-mode: forwards;
 }
@@ -118,12 +118,10 @@ body {
   align-items: center;
   order: 3;
 
-  width: var(--control-size);
-  height: var(--control-size);
+  width: 1.1rem;
+  height: 1.1rem;
 
   transition: var(--transition-standard);
-
-  /* custom styling */
   appearance: none;
   border-radius: 50%;
   background-color: var(--accent);
@@ -134,7 +132,7 @@ body {
 }
 
 
-/* CONTROLS CHANGE */
+/******** CONTROLS CHANGE ********/
 #control-1:checked ~ .controls-wrapper label[for = control-1] .control:after {
   visibility: visible;
   animation-name: appear-control;
@@ -154,7 +152,7 @@ body {
 
 
 
-/* IMAGE CHANGE */
+/******** IMAGE CHANGE ********/
 #control-2:checked ~ .gallery .gallery__image-wrapper {
   transform: translateX(-100%);
 }
@@ -166,7 +164,7 @@ body {
 }
 
 
-/* TEXT CHANGE */
+/******** TEXT CHANGE ********/
 #control-1:checked ~ .text-wrapper #text-1 {
   display: block;
   animation: appear-text var(--transition-large-extra);
@@ -185,7 +183,7 @@ body {
 }
 
 
-/* ANIMATION */
+/******** ANIMATION ********/
 @keyframes appear-text {
   from {
     color: transparent;
@@ -202,11 +200,15 @@ body {
 }
 
 
-/* MEDIA QUERIES */
+/******** MEDIA QUERIES ********/
 @media only screen and (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  
   .container {
     justify-content: center;
-    padding: 1rem;
+    padding: var(--padding-large);
   }
 
   .gallery {
@@ -214,6 +216,10 @@ body {
     margin: 0 auto;
     margin-bottom: 0px;
     overflow: hidden;
+  }
+
+  .gallery__image-wrapper {
+    padding: 0px;
   }
 
   .controls-wrapper {
