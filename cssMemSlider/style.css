@@ -38,7 +38,7 @@ body {
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 50rem;
 
   width: 100%;
   height: auto;
@@ -90,6 +90,15 @@ body {
 .control-radio {
   display: none;
 }
+.control__point {
+  visibility: hidden;
+  width: 65%;
+  height: 65%;
+
+  border-radius: 50%;
+  animation-duration: var(--transition-large);
+  animation-fill-mode: forwards;
+}
 
 .controls-wrapper {
   margin-right: 1rem;
@@ -99,18 +108,13 @@ body {
   padding: 0.5rem 0.25rem;
   cursor: pointer;
 }
-
-.control-radio ~ .controls-wrapper .control:after {
-  visibility: hidden;
-  content: "";
-  width: 65%;
-  height: 65%;
-
-  border-radius: 100px;
-  animation-duration: var(--transition-large);
-  animation-fill-mode: forwards;
+.control-wrapper:active .control{
+  transform: translateY(0.2rem);
 }
-
+.control-wrapper:hover .control{
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+}
 
 .control {
   display: inline-flex;
@@ -126,26 +130,22 @@ body {
   border-radius: 50%;
   background-color: var(--accent);
 }
-.control-wrapper:hover .control{
-  background-color: var(--text-color);
-  border-color: var(--text-color);
-}
 
 
 /******** CONTROLS CHANGE ********/
-#control-1:checked ~ .controls-wrapper label[for = control-1] .control:after {
+#control-1:checked ~ .controls-wrapper label[for = control-1] .control .control__point {
   visibility: visible;
   animation-name: appear-control;
 }
-#control-2:checked ~ .controls-wrapper label[for = control-2] .control:after {
+#control-2:checked ~ .controls-wrapper label[for = control-2] .control .control__point {
   visibility: visible;
   animation-name: appear-control;
 }
-#control-3:checked ~ .controls-wrapper label[for = control-3] .control:after {
+#control-3:checked ~ .controls-wrapper label[for = control-3] .control .control__point {
   visibility: visible;
   animation-name: appear-control;
 }
-#control-4:checked ~ .controls-wrapper label[for = control-4] .control:after {
+#control-4:checked ~ .controls-wrapper label[for = control-4] .control .control__point {
   visibility: visible;
   animation-name: appear-control;
 }
@@ -214,16 +214,16 @@ body {
   .gallery {
     display: flex;
     margin: 0 auto;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     overflow: hidden;
   }
 
   .gallery__image-wrapper {
-    padding: 0px;
+    padding: 0;
   }
 
   .controls-wrapper {
-    margin: 1rem 0px;
+    margin: 1rem 0;
   }
 
   .text-wrapper {
